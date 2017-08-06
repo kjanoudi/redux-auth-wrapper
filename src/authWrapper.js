@@ -31,6 +31,16 @@ export default (args) => {
         isAuthenticating: false
       }
 
+      shouldComponentUpdate(nextProps) {
+        if (this.props.isAuthenticated !== nextProps.isAuthenticated) {
+          return true
+        }
+        if (this.props.isAuthenticating !== nextProps.isAuthenticating) {
+          return true
+        }
+        return false
+      }
+
       render() {
         const { isAuthenticated, isAuthenticating } = this.props
         if (isAuthenticated) {
